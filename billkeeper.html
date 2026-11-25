@@ -450,6 +450,10 @@
           <span class="field-help">Enter a positive amount in Philippine pesos.</span>
         </div>
         <div class="field">
+          <label for="provider">Bill Provider (optional)</label>
+          <input id="provider" name="provider" type="text" maxlength="100" placeholder="e.g. Meralco">
+        </div>
+        <div class="field">
           <label for="due-date">Due date *</label>
           <input id="due-date" name="dueDate" type="date" required>
         </div>
@@ -520,26 +524,26 @@
     const CATEGORIES = ["Electricity", "Water", "Internet", "Phone", "Rent"];
     // Fictional fixtures use November 25, 2026 as the reminder-test date.
     const SAMPLE_BILLS = [
-      { id: "sample-electricity-overdue", category: "Electricity", amount: 4280.75, dueDate: "2026-11-20", status: "unpaid", archived: false },
-      { id: "sample-water-overdue", category: "Water", amount: 860.40, dueDate: "2026-11-24", status: "unpaid", archived: false },
-      { id: "sample-home-insurance-overdue", category: "Home Insurance", amount: 1750.00, dueDate: "2026-11-21", status: "unpaid", archived: false },
-      { id: "sample-internet-due-today", category: "Internet", amount: 1899.00, dueDate: "2026-11-25", status: "unpaid", archived: false },
-      { id: "sample-phone-due-tomorrow", category: "Phone", amount: 1250.00, dueDate: "2026-11-26", status: "unpaid", archived: false },
-      { id: "sample-rent-due-in-three-days", category: "Rent", amount: 22500.00, dueDate: "2026-11-28", status: "unpaid", archived: false },
-      { id: "sample-electricity-within-week", category: "Electricity", amount: 3650.00, dueDate: "2026-11-30", status: "unpaid", archived: false },
-      { id: "sample-water-seven-days", category: "Water", amount: 945.00, dueDate: "2026-12-02", status: "unpaid", archived: false },
-      { id: "sample-internet-december", category: "Internet", amount: 2099.00, dueDate: "2026-12-10", status: "unpaid", archived: false },
-      { id: "sample-phone-december", category: "Phone", amount: 1450.00, dueDate: "2026-12-05", status: "unpaid", archived: false },
-      { id: "sample-rent-paid", category: "Rent", amount: 22500.00, dueDate: "2026-11-01", status: "paid", archived: false },
-      { id: "sample-electricity-paid", category: "Electricity", amount: 3980.00, dueDate: "2026-11-25", status: "paid", archived: false },
-      { id: "sample-water-paid", category: "Water", amount: 780.00, dueDate: "2026-11-22", status: "paid", archived: false },
-      { id: "sample-internet-paid-december", category: "Internet", amount: 1899.00, dueDate: "2026-12-07", status: "paid", archived: false },
-      { id: "sample-phone-paid-december", category: "Phone", amount: 1299.00, dueDate: "2026-12-01", status: "paid", archived: false },
-      { id: "sample-lpg", category: "LPG", amount: 1350.00, dueDate: "2026-11-29", status: "unpaid", archived: false },
-      { id: "sample-groceries", category: "Groceries", amount: 2460.35, dueDate: "2026-12-01", status: "unpaid", archived: false },
-      { id: "sample-cable-tv-archived", category: "Cable TV", amount: 1025.00, dueDate: "2026-11-25", status: "unpaid", archived: true },
-      { id: "sample-garbage-collection", category: "Garbage Collection", amount: 425.50, dueDate: "2026-12-20", status: "unpaid", archived: false },
-      { id: "sample-electricity-later-december", category: "Electricity", amount: 4150.00, dueDate: "2026-12-03", status: "unpaid", archived: false }
+      { id: "sample-electricity-overdue", category: "Electricity", amount: 4280.75, dueDate: "2026-11-20", status: "unpaid", archived: false, provider: "Meralco" },
+      { id: "sample-water-overdue", category: "Water", amount: 860.40, dueDate: "2026-11-24", status: "unpaid", archived: false, provider: "Manila Water" },
+      { id: "sample-home-insurance-overdue", category: "Home Insurance", amount: 1750.00, dueDate: "2026-11-21", status: "unpaid", archived: false, provider: "Sample Insurance Co." },
+      { id: "sample-internet-due-today", category: "Internet", amount: 1899.00, dueDate: "2026-11-25", status: "unpaid", archived: false, provider: "PLDT" },
+      { id: "sample-phone-due-tomorrow", category: "Phone", amount: 1250.00, dueDate: "2026-11-26", status: "unpaid", archived: false, provider: "Globe" },
+      { id: "sample-rent-due-in-three-days", category: "Rent", amount: 22500.00, dueDate: "2026-11-28", status: "unpaid", archived: false, provider: "Landlord" },
+      { id: "sample-electricity-within-week", category: "Electricity", amount: 3650.00, dueDate: "2026-11-30", status: "unpaid", archived: false, provider: "Meralco" },
+      { id: "sample-water-seven-days", category: "Water", amount: 945.00, dueDate: "2026-12-02", status: "unpaid", archived: false, provider: "Maynilad" },
+      { id: "sample-internet-december", category: "Internet", amount: 2099.00, dueDate: "2026-12-10", status: "unpaid", archived: false, provider: "Globe" },
+      { id: "sample-phone-december", category: "Phone", amount: 1450.00, dueDate: "2026-12-05", status: "unpaid", archived: false, provider: "Smart" },
+      { id: "sample-rent-paid", category: "Rent", amount: 22500.00, dueDate: "2026-11-01", status: "paid", archived: false, provider: "Landlord" },
+      { id: "sample-electricity-paid", category: "Electricity", amount: 3980.00, dueDate: "2026-11-25", status: "paid", archived: false, provider: "Meralco" },
+      { id: "sample-water-paid", category: "Water", amount: 780.00, dueDate: "2026-11-22", status: "paid", archived: false, provider: "Manila Water" },
+      { id: "sample-internet-paid-december", category: "Internet", amount: 1899.00, dueDate: "2026-12-07", status: "paid", archived: false, provider: "Converge" },
+      { id: "sample-phone-paid-december", category: "Phone", amount: 1299.00, dueDate: "2026-12-01", status: "paid", archived: false, provider: "Globe" },
+      { id: "sample-lpg", category: "LPG", amount: 1350.00, dueDate: "2026-11-29", status: "unpaid", archived: false, provider: "Petron LPG" },
+      { id: "sample-groceries", category: "Groceries", amount: 2460.35, dueDate: "2026-12-01", status: "unpaid", archived: false, provider: "Neighborhood Market" },
+      { id: "sample-cable-tv-archived", category: "Cable TV", amount: 1025.00, dueDate: "2026-11-25", status: "unpaid", archived: true, provider: "Sky Cable" },
+      { id: "sample-garbage-collection", category: "Garbage Collection", amount: 425.50, dueDate: "2026-12-20", status: "unpaid", archived: false, provider: "City Waste Services" },
+      { id: "sample-electricity-later-december", category: "Electricity", amount: 4150.00, dueDate: "2026-12-03", status: "unpaid", archived: false, provider: "Meralco" }
     ];
     const dateFormatter = new Intl.DateTimeFormat("en-PH", { year: "numeric", month: "short", day: "numeric" });
     const moneyFormatter = new Intl.NumberFormat("en-PH", { style: "currency", currency: "PHP", minimumFractionDigits: 2 });
@@ -608,7 +612,8 @@
             return !bill || typeof bill.id !== "string" || typeof bill.category !== "string" ||
               typeof bill.amount !== "number" || !Number.isFinite(bill.amount) ||
               typeof bill.dueDate !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(bill.dueDate) ||
-              (bill.status !== "paid" && bill.status !== "unpaid") || typeof bill.archived !== "boolean";
+              (bill.status !== "paid" && bill.status !== "unpaid") || typeof bill.archived !== "boolean" ||
+              (bill.provider !== undefined && typeof bill.provider !== "string");
           })) {
             throw new Error("Saved bill data is not in the expected format.");
           }
@@ -625,6 +630,23 @@
             bills = samples;
           }
           localStorage.setItem(SAMPLE_DATA_INITIALIZED_KEY, "true");
+        }
+
+        const sampleProviders = new Map(SAMPLE_BILLS.map(function (bill) {
+          return [bill.id, bill.provider];
+        }));
+        let providerUpdated = false;
+        const billsWithSampleProviders = bills.map(function (bill) {
+          const sampleProvider = sampleProviders.get(bill.id);
+          if (sampleProvider && (!bill.provider || !bill.provider.trim())) {
+            providerUpdated = true;
+            return Object.assign({}, bill, { provider: sampleProvider });
+          }
+          return bill;
+        });
+        if (providerUpdated) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(billsWithSampleProviders));
+          bills = billsWithSampleProviders;
         }
       } catch (error) {
         storageError = "BillKeeper could not read or initialize saved bills (" + error.message + "). Existing bill records were not overwritten. Check browser storage access before making changes.";
@@ -732,7 +754,7 @@
           '<button class="button button-danger button-small" type="button" data-action="archive" data-id="' + escapeHtml(bill.id) + '">Archive</button>' +
           '<button class="button button-danger button-small" type="button" data-action="delete" data-id="' + escapeHtml(bill.id) + '">Delete</button>';
       return '<article class="bill-row">' +
-        '<div class="bill-main"><span class="bill-category">' + escapeHtml(bill.category) + '</span><span class="bill-date">Due ' + escapeHtml(dateText) + '</span></div>' +
+        '<div class="bill-main"><span class="bill-category">' + escapeHtml(bill.category) + '</span><span class="bill-date">Provider: ' + escapeHtml(bill.provider && bill.provider.trim() ? bill.provider.trim() : "—") + '</span><span class="bill-date">Due ' + escapeHtml(dateText) + '</span></div>' +
         '<span class="amount">' + escapeHtml(formatMoney(bill.amount)) + '</span>' +
         '<div class="status-cell">' + statusBadge(bill) + '</div>' +
         '<div class="row-action">' + actions + '</div></article>';
@@ -1005,6 +1027,7 @@
         updateCustomCategory();
         if (!knownCategory) customCategoryInput.value = bill.category;
         document.getElementById("amount").value = bill.amount.toFixed(2);
+        document.getElementById("provider").value = bill.provider || "";
         document.getElementById("due-date").value = bill.dueDate;
         document.getElementById("status").value = bill.status;
       } else {
@@ -1024,6 +1047,7 @@
       error.textContent = "";
       const category = categorySelect.value === "Other" ? customCategoryInput.value.trim() : categorySelect.value;
       const amount = Number(document.getElementById("amount").value);
+      const provider = document.getElementById("provider").value.trim();
       const dueDate = document.getElementById("due-date").value;
       const status = document.getElementById("status").value;
       if (!category || !dueDate || !status || !Number.isFinite(amount) || amount <= 0) {
@@ -1041,6 +1065,7 @@
         id: previous ? previous.id : (window.crypto && crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2)),
         category: category,
         amount: Math.round(amount * 100) / 100,
+        provider: provider,
         dueDate: dueDate,
         status: status,
         archived: previous ? previous.archived : false,
