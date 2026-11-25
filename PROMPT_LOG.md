@@ -523,3 +523,59 @@ Requirements:
 5. Check that all form labels are properly associated after the fix.
 
 Explain which labels were fixed and what changes you made.
+
+Prompt 9 – Add Bill Provider Field
+
+Date: November 25, 2026
+
+Purpose: Add an optional Bill Provider field to identify the company or service provider associated with each household bill.
+
+Prompt:
+[You are a senior web developer working on my existing BillKeeper household bill tracker.
+
+Add a new optional field called "Bill Provider" to the existing bill form.
+
+Requirements:
+1. Add a text input labeled "Bill Provider" when adding a new bill.
+2. Add the same field when editing an existing bill.
+3. Save the provider value together with the bill data using the existing localStorage implementation.
+4. Display the provider in the bill list or bill details.
+5. Existing bills created before this update that do not have a provider must continue working and display "—" for the provider.
+6. The field must be optional. Do not prevent users from saving a bill when it is blank.
+7. Preserve all existing BillKeeper features, styling, validation, PIN protection, notifications, archive, and delete behavior.
+8. Do not rewrite the application or change unrelated functionality.
+
+After making the changes, explain which parts of the existing application you modified.]
+
+Result: Successfully added the optional Bill Provider field.
+
+Verified: PASS – Add, edit, display, and existing bills checked.
+
+Prompt 10 – Add Providers to Existing Sample Bills
+
+Date: November 25, 2026
+
+Purpose: Assign realistic sample providers to the 20 existing household bills.
+
+Prompt:
+[Update the 20 existing sample household bills in my BillKeeper application.
+
+Requirements:
+1. Assign a realistic sample Bill Provider to each of the 20 existing sample bills based on its category.
+2. Use appropriate sample providers, such as:
+   - Electricity: Meralco
+   - Water: Manila Water or Maynilad
+   - Internet: PLDT, Globe, or Converge
+   - Phone: Globe or Smart
+   - Rent: Landlord
+   - Other: Appropriate sample provider names.
+3. Preserve all existing bill amounts, due dates, categories, and payment statuses.
+4. Do not create additional bills or duplicate existing records.
+5. Ensure the provider values are saved and displayed correctly.
+6. Do not overwrite existing user-created bills or existing localStorage data.
+7. Preserve the current layout and all existing BillKeeper functionality.
+
+Make only the necessary changes.]
+Result: Successfully assigned providers to the 20 existing sample bills.
+
+Verified: PASS – All 20 records checked and persisted after refresh.
